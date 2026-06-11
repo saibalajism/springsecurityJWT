@@ -27,6 +27,10 @@ public class userServiceImpl implements userService {
 
 	@Override
 	public userEntity createUser(createUserDto dto) {
+		userEntity existingUser = userRepo.findByUserName(dto.getUserName());
+	    if (existingUser != null) {
+	        throw new RuntimeException("Username is already taken!"); 
+	    }
 		
 		userEntity userDetails = new userEntity();
 		userDetails.setUserName(dto.getUserName());
