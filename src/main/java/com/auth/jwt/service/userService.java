@@ -16,5 +16,9 @@ public interface userService extends UserDetailsService {
 	userEntity userLogin(createUserDto dto);
 	
 	UserDetails loadUserByUsername(String Username);
+	
+	String jwtToken(createUserDto dto);
+	
+	String generateToken(createUserDto dto);
 
 }

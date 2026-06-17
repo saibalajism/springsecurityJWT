@@ -28,12 +28,14 @@ public class userController {
 	
 	@PostMapping("/login")
 	public String userLogin(@RequestBody createUserDto user) {
-		var valid= userRepo.findByUserName(user.getUserName());
-		if(!Objects.isNull(valid)) {
-			return "Success";
-		}else {
-			return "failed";
-		}
+		
+		return service.jwtToken(user);
+		//var valid= userRepo.findByUserName(user.getUserName());
+//		if(!Objects.isNull(valid)) {
+//			return "Success";
+//		}else {
+//			return "failed";
+//		}
 	}
 
 }
